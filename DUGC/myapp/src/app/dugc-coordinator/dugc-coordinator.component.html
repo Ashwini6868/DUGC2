@@ -1,0 +1,16 @@
+<div>
+    <button (click)="toggleSubButtons('ISA')">ISA</button>
+    <button (click)="toggleSubButtons('ESA')">ESA</button>
+    <button (click)="toggleSubButtons('LAB-CIE')">LAB CIE</button>
+    <button (click)="toggleSubButtons('COURSE WITHDRAWAL')">Course Withdrawal</button>
+    <button (click)="toggleSubButtons('ELIGIBILITY')">Eligibility</button>
+    <button (click)="toggleSubButtons('MAKEUP MINOR')">Makeup Minor</button>
+    <button (click)="toggleSubButtons('CIRCULAR')">Circular</button>
+    <button (click)="toggleSubButtons('NOTIFICATIONS')">Notifications</button>
+    <button (click)="toggleSubButtons('ADD-COURSE-COORDINATOR')">ADD COURSE COORDINATOR</button>
+  </div>
+  
+  <div *ngIf="showSubButtons" class="sub-buttons">
+    <button *ngFor="let subButton of subButtons">{{ subButton }}</button>
+  </div>
+  

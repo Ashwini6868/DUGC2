@@ -1,23 +1,3 @@
-
-// var marks = require('../models/marks');
-// var csv = require('csvtojson');
-
-
-// const importfile = async (req, res) => {
-//     try {
-//         csv().fromFile(req.file.path).then((response) => {
-//             console.log(response);
-//         })
-//         res.send({ status: 200, success: true, msg: "File is successfully uploaded" });
-
-//     } catch (error) {
-//         res.send({status:400,success:false,msg:error.message})
-//     }
-// }
-
-// module.exports = {
-//     importfile
-// };
 // const marks = require('../models/marks');
 // const excelToJson = require('convert-excel-to-json');
 
@@ -42,13 +22,31 @@
 //                 }
 //             ]
 //         });
-
+       
 //         const marksData = excelData.Sheet1.map(row => new marks(row));
 
-//         await marks.insertMany(marksData);
+//         console.log('Parsed Data:', marksData);
+//         var marksData1 = [];
+//         for (var x = 0; x < marksData.length; x++){
+//             marksData1.push({
+//                 RollNo: marksData[x].RollNo,
+//                 USN: marksData[x].USN,
+//                 Name: marksData[x].Name,
+//                 CIE: marksData[x].CIE,
+//                 GrandTotal: marksData[x].GrandTotal,
+//                 Grade: marksData[x].Grade
+//             })
+//         }
 
-//         console.log('Data inserted into MongoDB');
+//      const response= await marks.insertMany(marksData1);
+       
+//         if (response) {
+//             console.log("Successfull");
+//         } else {
+//             console.log("Unsuccessfull");
+//         }
 //         res.send({ status: 200, success: true, msg: 'File is successfully uploaded' });
+        
 //     } catch (error) {
 //         console.error('Error processing the file:', error);
 //         res.status(400).send({ status: 400, success: false, msg: error.message });
@@ -58,35 +56,13 @@
 // module.exports = {
 //     importfile
 // };
-// const marks = require('../models/marks');
-// const xlsx = require('xlsx');
-
-// const importfile = async (req, res) => {
-//     try {
-//         const workbook = xlsx.readFile(req.file.path);
-//         const sheetName = workbook.SheetNames[0];
-
-//         const excelData = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
-
-//         const marksData = excelData.map(row => new marks(row));
-
-//         await marks.insertMany(marksData, { maxTimeMS: 60000 }); // 60 seconds timeout
 
 
-//         console.log('Data inserted into MongoDB');
-//         res.send({ status: 200, success: true, msg: 'File is successfully uploaded' });
-//     } catch (error) {
-//         console.error('Error processing the file:', error);
-//         res.status(400).send({ status: 400, success: false, msg: error.message });
-//     }
-// };
-
-// module.exports = {
-//     importfile
-// };
 
 
-const marks = require('../models/marks');
+
+
+const DivisionModel = require('../models/division'); 
 const excelToJson = require('convert-excel-to-json');
 
 const importfile = async (req, res) => {
@@ -98,7 +74,7 @@ const importfile = async (req, res) => {
             },
             sheets: [
                 {
-                    name: 'Sheet1', // Adjust the sheet name as needed
+                    name: 'Sheet1',
                     columnToKey: {
                         A: 'RollNo',
                         B: 'USN',
@@ -111,13 +87,44 @@ const importfile = async (req, res) => {
             ]
         });
 
-        const marksData = excelData.Sheet1.map(row => new marks(row));
+        const resultData = excelData.Sheet1.map(row => ({
+            RollNo: row.RollNo,
+            USN: row.USN,
+            Name: row.Name,
+            CIE: row.CIE,
+            GrandTotal: row.GrandTotal,
+            Grade: row.Grade
+        }));
+        console.log(resultData);
+        const examTypeData = {
+            ExamName: 'Minor1', 
+            Results: resultData
+        };
+        console.log(examTypeData);
 
-        // Log the parsed data to the terminal
-        console.log('Parsed Data:', marksData);
+        const courseData = {
+            courseName: 'Computer Networks', 
+            courseCode: '21CSE234', 
+            ExamType: [examTypeData]
+        };
 
-        console.log('Data not inserted into MongoDB (only logged)');
+        const divisionName = 'A';
+
+        const divisionData = {
+            divisionName: divisionName,
+            courses: [courseData]
+        };
+
+        // const response = await DivisionModel.create(divisionData);
+        console.log(divisionData);
+
+        // if (response) {
+        //     console.log("Successful");
+        // } else {
+        //     console.log("Unsuccessful");
+        // }
         res.send({ status: 200, success: true, msg: 'File is successfully uploaded' });
+
     } catch (error) {
         console.error('Error processing the file:', error);
         res.status(400).send({ status: 400, success: false, msg: error.message });

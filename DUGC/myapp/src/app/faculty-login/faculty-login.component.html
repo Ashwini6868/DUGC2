@@ -1,0 +1,15 @@
+<div *ngIf="showFacultyForm">
+  <button style="margin-left: 475px; padding: 11px 50px;" (click)="toggleSubButtons('ISA')">ISA</button>
+  <button (click)="toggleSubButtons('LAB-CIE')" style="margin-left:20px ;">LAB CIE</button>
+  <button (click)="toggleSubButtons('NOTIFICATIONS')" style="margin-left:20px ;">Notifications</button>
+  
+</div>
+<div *ngIf="showSubButtons" class="sub-buttons">
+  <button *ngFor="let subButton of subButtons">{{ subButton }}</button>
+</div>
+<div *ngIf="showFacultyForm">
+
+  <img src="assets/clite.png" alt="clite img" class="clite-photo" >
+</div>
+
+

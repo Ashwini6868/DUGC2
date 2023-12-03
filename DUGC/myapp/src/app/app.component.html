@@ -1,0 +1,33 @@
+<div class="nav-container">
+  <div class="navbar">
+    <div class="nav-section nav-img-section">
+      <a [routerLink]="['/home']">
+        <img src="assets/logo.png" alt="KLE Tech logo" class="nav-logo">
+      </a>
+    </div>
+    <div class="nav-section nav-des-section">
+      <div>
+        <div class="nav-right-section">
+          <div class="nav-des nav-des-first">DUGC</div>
+          <div class="nav-des nav-des-second">SoCSE</div>
+        </div>
+      </div>
+      
+      <!-- <div class="nav-options2">
+        <div class="nav-des" id="welcome-message" *ngIf="user_type_name != ''">Welcome, <span
+            class="role-display">{{user_type_name}}</span></div>
+        <button class="nav-op2" [routerLink]="['/loginMain']">Login</button>
+        <button class="nav-op2" [routerLink]="['/registerMain']" *ngIf="!log()">Register</button>
+        <button class="nav-op2">Logout</button>
+        <div class="nav-op2"  [routerLink]="['/loginMain']" >Login</div>
+        <div class="nav-op2" [routerLink]="['/register']"  >Logout</div>
+        <div class="nav-op2" >Logout</div>
+      </div> -->
+    </div>
+  </div>
+  <app-dummy></app-dummy>
+  <router-outlet></router-outlet>
+
+
+
+</div>

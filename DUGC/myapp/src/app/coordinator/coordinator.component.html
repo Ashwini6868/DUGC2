@@ -1,0 +1,12 @@
+<div class="navbar">
+    <button (click)="toggleSubButtons('ISA')">ISA</button>
+    <button (click)="toggleSubButtons('ESA')">ESA</button>
+    <button (click)="toggleSubButtons('LAB-CIE')">LAB CIE</button>
+    <button (click)="toggleSubButtons('NOTIFICATIONS')">Notifications</button>
+    <button (click)="toggleSubButtons('ADD-FACULTY')">ADD FACULTY</button>
+  </div>
+  
+  <div *ngIf="showSubButtons" class="sub-buttons">
+    <button *ngFor="let subButton of subButtons">{{ subButton }}</button>
+  </div>
+  

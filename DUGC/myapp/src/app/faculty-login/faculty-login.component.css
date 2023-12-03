@@ -1,0 +1,45 @@
+button {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-left: 10vh;
+    padding: 11px 30px;
+    font-size: 16px;
+    background-color:crimson;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .clite-photo{
+    border-radius: 1.5vh;
+    margin-top: 1.5vh;
+    margin-left: 30.5vh;
+    opacity: 70%;
+  }
+  
+  button:hover {
+    background-color: #ef7b92;
+  }
+  
+  .sub-buttons {
+    margin-top: 10px;
+  }
+  
+  .sub-buttons button {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-left: 200px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color:  rgb(146, 215, 240);
+    color: rgb(9, 9, 9);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .sub-buttons button:hover {
+    background-color:rgb(180, 219, 234);
+  }
+  
