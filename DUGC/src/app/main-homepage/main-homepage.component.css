@@ -1,0 +1,32 @@
+.home-wrapper {
+  min-height: 2.4vw;
+}
+
+#jumbotron {
+  position: absolute;
+  width: 84.5vw;
+  opacity: 70%;
+  z-index: 0;
+  border-radius: 5px;
+}
+
+#overlay-text {
+  margin-top: -0.7em;
+  font-weight: 700;
+  z-index: -1;
+  padding: 1.5em 2em;
+  display: flex;
+  align-items: center;
+}
+
+#title {
+  color: #C62128;
+  font-size: 3em;
+  padding-right: 0.5em;
+}
+
+#subtitle {
+  font-size: 2em;
+  border-left: 0.1em solid black;
+  padding-left: 0.6em;
+}
